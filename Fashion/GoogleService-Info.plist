@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>515779960710-n833iinornfa50ad0s40i25s4fpb16kb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.515779960710-n833iinornfa50ad0s40i25s4fpb16kb</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBbxbFSfe8qsnNFCs3Paix7HqJdFymMDKs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>515779960710</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Fashion</string>
+	<key>PROJECT_ID</key>
+	<string>fash-48edc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fash-48edc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:515779960710:ios:68a860f297ed0c0e</string>
+	<key>DATABASE_URL</key>
+	<string>https://fash-48edc.firebaseio.com</string>
+</dict>
+</plist>

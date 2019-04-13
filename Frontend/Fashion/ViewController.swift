@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class ViewController: UIViewController {
     
     @IBOutlet weak var signInSelector: UISegmentedControl!
@@ -26,9 +26,52 @@ class ViewController: UIViewController {
     @IBAction func signInSelectorChanged(_ sender: UISegmentedControl) {
         // flip the botton
         isSignIn = !isSignIn;
+        // check the bool and set the button and labels
+        if isSignIn{
+            signInLabel.text = "Sign In"
+            signInButton.setTitle("sign In", for: .normal)
+        }
+        else {
+            signInLabel.text = "Register"
+            signInButton.setTitle("Register", for: .normal)
+            
+        }
     }
     
     @IBAction func signInButtonTapped(_ sender: UIButton) {
+        //check if it's sign in or register
+        if let email = emailTextField.text, let pass = PasswordTextField.text{
+            if isSignIn {
+                //sign in the user with firebase
+                Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
+                    if let u = user {
+                        // user is found, go to home screen
+                        self.performSegue(withIdentifier: "goToHome", sender: self)
+                    }
+                    else {
+                        // error: check error and show message
+                    }
+                }
+            }
+            else{
+                    //Register the ser with Firebase
+                Auth.auth().createUser(withEmail: email, password: pass) { (user, error) in
+                    if error != nil{
+                        print (error?.localizedDescription)
+                    }
+                    // check if user isn't nil
+                    if let u = user{
+                        // user is found. go to home screen
+                        self.performSegue(withIdentifier: "goToHome", sender: self)
+                    }
+                    else{
+                        // error: check error and show messagep
+                        
+                    }
+                }
+            }
+        }
+
     }
 }
 

@@ -57,10 +57,10 @@ class ViewController: UIViewController {
                     //Register the ser with Firebase
                 Auth.auth().createUser(withEmail: email, password: pass) { (user, error) in
                     if error != nil{
-                        print (error?.localizedDescription)
+                        print (error?.localizedDescription) //print error
                     }
                     // check if user isn't nil
-                    if let u = user{
+                    if user != nil{
                         // user is found. go to home screen
                         self.performSegue(withIdentifier: "goToHome", sender: self)
                     }
@@ -72,6 +72,11 @@ class ViewController: UIViewController {
             }
         }
 
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // dismiss the keyboard when the view is tapped on
+        emailTextField.resignFirstResponder()
+        PasswordTextField.resignFirstResponder()
     }
 }
 

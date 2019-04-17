@@ -14,6 +14,7 @@
 		422BBA2222610EC300D75928 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422BBA2022610EC300D75928 /* LaunchScreen.storyboard */; };
 		422BBA2D22610EC300D75928 /* FashionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422BBA2C22610EC300D75928 /* FashionTests.swift */; };
 		422BBA382261111000D75928 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422BBA372261111000D75928 /* GoogleService-Info.plist */; };
+		429C5ECF2263894F00FAFDA3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429C5ECE2263894E00FAFDA3 /* SettingsTableViewController.swift */; };
 		750BF962A7C60027E70E21BE /* Pods_Fashion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D063D5B904F88C2A46C983 /* Pods_Fashion.framework */; };
 		A6F58D6AC9B4A56A0193E159 /* Pods_FashionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246DB8A53A7F78AD125BEF45 /* Pods_FashionTests.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		422BBA2C22610EC300D75928 /* FashionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionTests.swift; sourceTree = "<group>"; };
 		422BBA2E22610EC300D75928 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		422BBA372261111000D75928 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		429C5ECE2263894E00FAFDA3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		55D063D5B904F88C2A46C983 /* Pods_Fashion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fashion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB612B5EB00B59B9608F379 /* Pods-Fashion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fashion.release.xcconfig"; path = "Target Support Files/Pods-Fashion/Pods-Fashion.release.xcconfig"; sourceTree = "<group>"; };
 		7126A6BA41A88383C45050C5 /* Pods-Fashion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fashion.debug.xcconfig"; path = "Target Support Files/Pods-Fashion/Pods-Fashion.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				422BBA1722610EC000D75928 /* AppDelegate.swift */,
 				422BBA1922610EC000D75928 /* ViewController.swift */,
+				429C5ECE2263894E00FAFDA3 /* SettingsTableViewController.swift */,
 				422BBA1B22610EC000D75928 /* Main.storyboard */,
 				422BBA1E22610EC300D75928 /* Assets.xcassets */,
 				422BBA2022610EC300D75928 /* LaunchScreen.storyboard */,
@@ -128,7 +131,6 @@
 				8C809D8B381946151F81DFE5 /* Pods-FashionTests.debug.xcconfig */,
 				405F06FAF301C01C71C2F938 /* Pods-FashionTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -335,6 +337,7 @@
 			files = (
 				422BBA1A22610EC000D75928 /* ViewController.swift in Sources */,
 				422BBA1822610EC000D75928 /* AppDelegate.swift in Sources */,
+				429C5ECF2263894F00FAFDA3 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

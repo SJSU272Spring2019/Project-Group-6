@@ -3,7 +3,7 @@
 //  Fashion
 //
 //  Created by Junlan Lu on 4/12/19.
-//  Copyright © 2019 Junlan Lu. All rights reserved.
+//  Copyright © 20/Users/junlanlu/Library/Mobile Documents/com~apple~CloudDocs/ios_app/Project-Group-6/Frontend/Fashion/SettingsTableViewController.swift19 Junlan Lu. All rights reserved.
 //
 
 import UIKit

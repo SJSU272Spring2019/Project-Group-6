@@ -5,13 +5,8 @@
 //  Created by Junlan Lu on 4/14/19.
 //  Copyright © 2019 Junlan Lu. All rights reserved.
 //
-
 import UIKit
-
 class SettingsTableViewController: UITableViewController {
-    
-//    @IBOutlet weak var NameTextField: UITextField!
-//    @IBOutlet weak var emailTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +16,15 @@ class SettingsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
-        
-        for i in 0...1000 {
-            data.append("\(i)")
-        }
+//        for i in 0...1000 {
+//            data.append("\(i)")
+//        }
     }
-    
-    private var data: [String] = []
+//
+//    private var data: [String] = []
     
 
-    // MARK: - Table view data source
+//     MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {
 //        // #warning Incomplete implementation, return the number of sections
@@ -42,16 +35,18 @@ class SettingsTableViewController: UITableViewController {
 //        // #warning Incomplete implementation, return the number of rows
 //        return data.count
 //    }
+//
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+////
+////        let item = items[indexPath.section]
+////        let cell = tableView.dequeueReusableCell(withIdentifier: "ReuseIdentifier", for: indexPath)
+//        // Configure the cell...
+//
+//
+//        return cell;
+//    }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.

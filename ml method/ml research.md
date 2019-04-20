@@ -12,3 +12,12 @@ Divide your training images to two folders, one is like, another is dislike.
 Upload the images in like folder to class like, upload the images in dislike folder to default Negative class.
 
 ![create image class](https://github.com/SJSU272Spring2019/Project-Group-6/blob/master/ml%20method/images/1.png)
+
+### 3. Train your model with one button click!
+
+### 4. Test your model with testing images
+
+The model will give a possibility of how this test image belongs to like class.
+![test image](https://github.com/SJSU272Spring2019/Project-Group-6/blob/master/ml%20method/images/2.png)
+
+

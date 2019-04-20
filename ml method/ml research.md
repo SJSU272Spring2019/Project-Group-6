@@ -6,5 +6,9 @@
 Here we use 00002_NEW IN_WOMAN_excel.xlsx downloaded from ZARA website. It contains info of cloths of ZARA with image link available.
 Then we use a script get_all_images.py to get all cloths images.
 
-### 2. label your training images and upload them to Watson Studio
+### 2. Label your training images and upload them to Watson Studio
 
+Divide your training images to two folders, one is like, another is dislike.
+Upload the images in like folder to class like, upload the images in dislike folder to default Negative class.
+
+![create image class](https://github.com/SJSU272Spring2019/Project-Group-6/blob/master/ml%20method/images/1.png)

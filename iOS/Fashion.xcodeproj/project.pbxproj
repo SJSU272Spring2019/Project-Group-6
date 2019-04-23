@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		421698062267F4DE0000543F /* FashionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421698052267F4DD0000543F /* FashionAPI.swift */; };
 		4216980822691CC50000543F /* ethnicityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4216980722691CC50000543F /* ethnicityTableViewController.swift */; };
+		4216980A2269A4CE0000543F /* wishListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421698092269A4CE0000543F /* wishListTableViewController.swift */; };
 		422BBA1822610EC000D75928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422BBA1722610EC000D75928 /* AppDelegate.swift */; };
 		422BBA1A22610EC000D75928 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422BBA1922610EC000D75928 /* ViewController.swift */; };
 		422BBA1D22610EC000D75928 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422BBA1B22610EC000D75928 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		405F06FAF301C01C71C2F938 /* Pods-FashionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionTests.release.xcconfig"; path = "Target Support Files/Pods-FashionTests/Pods-FashionTests.release.xcconfig"; sourceTree = "<group>"; };
 		421698052267F4DD0000543F /* FashionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionAPI.swift; sourceTree = "<group>"; };
 		4216980722691CC50000543F /* ethnicityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ethnicityTableViewController.swift; sourceTree = "<group>"; };
+		421698092269A4CE0000543F /* wishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wishListTableViewController.swift; sourceTree = "<group>"; };
 		422BBA1422610EC000D75928 /* Fashion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fashion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		422BBA1722610EC000D75928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		422BBA1922610EC000D75928 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				422BBA372261111000D75928 /* GoogleService-Info.plist */,
 				421698052267F4DD0000543F /* FashionAPI.swift */,
 				4216980722691CC50000543F /* ethnicityTableViewController.swift */,
+				421698092269A4CE0000543F /* wishListTableViewController.swift */,
 			);
 			path = Fashion;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4216980A2269A4CE0000543F /* wishListTableViewController.swift in Sources */,
 				422BBA1A22610EC000D75928 /* ViewController.swift in Sources */,
 				421698062267F4DE0000543F /* FashionAPI.swift in Sources */,
 				422BBA1822610EC000D75928 /* AppDelegate.swift in Sources */,

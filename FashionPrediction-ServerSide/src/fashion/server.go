@@ -122,6 +122,7 @@ func predictionHandler(formatter *render.Render) http.HandlerFunc {
 	}
 }
 
+/* Get the resource from Stackoverflow */
 func DownloadFile(filepath string, url string) error {
 
     // Get the data

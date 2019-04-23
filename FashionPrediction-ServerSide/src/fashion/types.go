@@ -1,9 +1,14 @@
 package main
 
-
+/**
+	response struct
+**/
 type Predict struct {
-	Class	    string   `json:"class"` 
-	Score		string   `json:"score"` 
+    ClothId   string     `json:"clothId" bson:"clothId"`
+    Url       string     `json:"url" bson:"url"`
+    Name      string     `json:"name" bson:"name"`
+    Price        string  `json:"price" bson:"price"`
+	Score		string   `json:"score" bson:"score"`
 }
 /** Deprecated
 type Result struct {
@@ -29,8 +34,15 @@ type ClassResult struct {
 }
 **/
 
-type Clothes struct {
-	ClothesUrl		string  `json:"clothUrl"`
+type Race struct {
+	Race		string  `json:"race"`
+}
+
+/**
+	post struct
+**/
+type ClothPostId struct {
+	ClothId   string     `json:"clothId" bson:"clothId"`
 }
 
 /**
@@ -64,6 +76,10 @@ type UserLike struct {
 type Cart struct {
 	Id 		  string     `json:"id" bson:"id"`
 	ClothId   string     `json:"clothId" bson:"clothId"`
+}
+
+type Success struct {
+	Success		 bool	`json:"success" bson:"success"`
 }
 
 

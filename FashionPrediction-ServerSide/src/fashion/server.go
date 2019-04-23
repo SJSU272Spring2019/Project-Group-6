@@ -42,7 +42,10 @@ func NewServer() *negroni.Negroni {
 // API Routes
 func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.HandleFunc("/v1/prediction", predictionHandler(formatter)).Methods("POST")
-
+	mx.HandleFunc("/v1/addLike", addLikeHandler(formatter)).Methods("POST")
+	mx.HandleFunc("/v1/addCart", addCartHandler(formatter)).Methods("POST")
+	mx.HandleFunc("/v1/userLike", userLikeHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/v1/userCart", userCartHandler(formatter)).Methods("GET")
 }
 
 // API Prediction Handler
@@ -144,6 +147,238 @@ func DownloadFile(filepath string, url string) error {
     _, err = io.Copy(out, resp.Body)
     return err
 }
+
+// API Post AddLike Handler 
+func addLikeHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		/**
+			Mongo server setup
+		**/
+		session, err := mgo.Dial(mongodb_server)
+        if err != nil {
+                fmt.Println("mongoserver panic")
+        }
+        defer session.Close()
+        session.SetMode(mgo.Monotonic, true)
+        uq := session.DB(mongodb_database).C("uQuestion")
+        ua := session.DB(mongodb_database).C("uAnswer")
+		/**
+			Get Post body
+		**/        
+        body, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Println(body)
+
+		var postResult PostContent
+		json.Unmarshal(body, &postResult)
+
+		/**
+			Hard code userid for testing
+		**/   
+		var userId = "888888"
+		var action = postResult.Action
+		var postId = postResult.Id
+
+		if action == "question" {
+			var question MUserQuestion
+			question.UserId = userId
+			question.Uquestions = postId 
+			uq.Insert(question)
+		}
+
+		if action == "answer" {
+			var answer MUserAnswer
+			answer.UserId = userId
+			answer.UAnswers = postId 
+			ua.Insert(answer)
+		}
+		
+		var response Success
+		response.Success = true
+        
+		formatter.JSON(w, http.StatusOK, response)
+	}
+}
+
+// API Post AddCart Handler
+func addCartHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		/**
+			Mongo server setup
+		**/
+		session, err := mgo.Dial(mongodb_server)
+        if err != nil {
+                fmt.Println("mongoserver panic")
+        }
+        defer session.Close()
+        session.SetMode(mgo.Monotonic, true)
+        uq := session.DB(mongodb_database).C("uQuestion")
+        ua := session.DB(mongodb_database).C("uAnswer")
+		/**
+			Get Post body
+		**/        
+        body, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Println(body)
+
+		var postResult PostContent
+		json.Unmarshal(body, &postResult)
+
+		/**
+			Hard code userid for testing
+		**/   
+		var userId = "888888"
+		var action = postResult.Action
+		var postId = postResult.Id
+
+		if action == "question" {
+			var question MUserQuestion
+			question.UserId = userId
+			question.Uquestions = postId 
+			uq.Insert(question)
+		}
+
+		if action == "answer" {
+			var answer MUserAnswer
+			answer.UserId = userId
+			answer.UAnswers = postId 
+			ua.Insert(answer)
+		}
+		
+		var response Success
+		response.Success = true
+        
+		formatter.JSON(w, http.StatusOK, response)
+	}
+}
+
+// API Post AddLike Handler 
+func userLikeHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		/**
+			Mongo server setup
+		**/
+		session, err := mgo.Dial(mongodb_server)
+        if err != nil {
+                fmt.Println("mongoserver panic")
+        }
+        defer session.Close()
+        session.SetMode(mgo.Monotonic, true)
+        uq := session.DB(mongodb_database).C("uQuestion")
+        ua := session.DB(mongodb_database).C("uAnswer")
+		/**
+			Get Post body
+		**/        
+        body, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Println(body)
+
+		var postResult PostContent
+		json.Unmarshal(body, &postResult)
+
+		/**
+			Hard code userid for testing
+		**/   
+		var userId = "888888"
+		var action = postResult.Action
+		var postId = postResult.Id
+
+		if action == "question" {
+			var question MUserQuestion
+			question.UserId = userId
+			question.Uquestions = postId 
+			uq.Insert(question)
+		}
+
+		if action == "answer" {
+			var answer MUserAnswer
+			answer.UserId = userId
+			answer.UAnswers = postId 
+			ua.Insert(answer)
+		}
+		
+		var response Success
+		response.Success = true
+        
+		formatter.JSON(w, http.StatusOK, response)
+	}
+}
+
+// API Post AddCart Handler
+func userCartHandler(formatter *render.Render) http.HandlerFunc {
+	return func(w http.ResponseWriter, req *http.Request) {
+		/**
+			Mongo server setup
+		**/
+		session, err := mgo.Dial(mongodb_server)
+        if err != nil {
+                fmt.Println("mongoserver panic")
+        }
+        defer session.Close()
+        session.SetMode(mgo.Monotonic, true)
+        uq := session.DB(mongodb_database).C("uQuestion")
+        ua := session.DB(mongodb_database).C("uAnswer")
+		/**
+			Get Post body
+		**/        
+        body, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		fmt.Println(body)
+
+		var postResult PostContent
+		json.Unmarshal(body, &postResult)
+
+		/**
+			Hard code userid for testing
+		**/   
+		var userId = "888888"
+		var action = postResult.Action
+		var postId = postResult.Id
+
+		if action == "question" {
+			var question MUserQuestion
+			question.UserId = userId
+			question.Uquestions = postId 
+			uq.Insert(question)
+		}
+
+		if action == "answer" {
+			var answer MUserAnswer
+			answer.UserId = userId
+			answer.UAnswers = postId 
+			ua.Insert(answer)
+		}
+		
+		var response Success
+		response.Success = true
+        
+		formatter.JSON(w, http.StatusOK, response)
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-struct wishList{
-    var id : String?
-    var mainImage : String?
-    var title : String?
+struct cartList: Decodable{
+    var clothId : String?
+    var url : String?
+    var name : String?
     var price : String?
     var score : String?
 }

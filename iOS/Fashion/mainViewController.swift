@@ -8,6 +8,13 @@
 
 import UIKit
 
+struct predictPic: Decodable{
+    var clothId : String?
+    var image : String?
+    var price : String?
+    var score : String?
+}
+
 class mainViewController: UIViewController {
     
     @IBOutlet weak var scoreLabel: UITextField!
@@ -21,8 +28,17 @@ class mainViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let jsonUrlString = "http://localhost:4000/v1/prediction"
+        guard let url = URL(string: jsonUrlString) else { return}
+        URLSession.shared.dataTask(with: url) { (data, response, err) in
+            //check error. reponse
+            guard let data = data else {return}
+            do {
+                let myPredictPic = try JSONDecoder().decode(predictPic.self, from: data)
+            }catch let jsonErr{ print ("error serialization json", jsonErr)}
+            }.resume()
     }
-    //scoreLabel.text = "34"
+
     
     @IBAction func dislikeTapped(_ sender: UIButton) {
     }
@@ -33,6 +49,4 @@ class mainViewController: UIViewController {
     
     @IBAction func likedTapped(_ sender: UIButton) {
     }
-    
-
 }

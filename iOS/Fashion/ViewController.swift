@@ -56,7 +56,7 @@ class ViewController: UIViewController {
                     //Register the ser with Firebase
                 Auth.auth().createUser(withEmail: email, password: pass) { (user, error) in
                     if error != nil{
-                        print (error?.localizedDescription) //print error
+                        print (error?.localizedDescription."error") //print error
                     }
                     // check if user isn't nil
                     if user != nil{
@@ -65,19 +65,14 @@ class ViewController: UIViewController {
                     }
                     else{
                         // error: check error and show messagep
-                        
                     }
                 }
             }
         }
-
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // dismiss the keyboard when the view is tapped on
         emailTextField.resignFirstResponder()
         PasswordTextField.resignFirstResponder()
     }
-    
-    
 }
-

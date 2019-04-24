@@ -794,7 +794,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="score" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gs7-Qj-fLg">
-                                            <rect key="frame" x="332" y="27.5" width="40" height="17"/>
+                                            <rect key="frame" x="187" y="27.5" width="40" height="17"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -810,7 +810,7 @@
                                         <constraint firstItem="Gs7-Qj-fLg" firstAttribute="top" secondItem="4tV-Xj-NsG" secondAttribute="bottom" constant="5" id="p73-i6-zvm"/>
                                         <constraint firstItem="rKp-T8-hbM" firstAttribute="leading" secondItem="HIG-Wr-V8M" secondAttribute="leading" constant="10" id="qzL-2D-jRc"/>
                                         <constraint firstItem="4tV-Xj-NsG" firstAttribute="top" secondItem="HIG-Wr-V8M" secondAttribute="top" constant="5" id="rau-9s-uyQ"/>
-                                        <constraint firstItem="Gs7-Qj-fLg" firstAttribute="centerX" secondItem="HIG-Wr-V8M" secondAttribute="centerX" constant="145" id="uck-sw-Gqd"/>
+                                        <constraint firstItem="Gs7-Qj-fLg" firstAttribute="centerX" secondItem="HIG-Wr-V8M" secondAttribute="centerX" id="uck-sw-Gqd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

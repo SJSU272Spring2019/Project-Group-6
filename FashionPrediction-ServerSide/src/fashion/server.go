@@ -48,8 +48,8 @@ func initRoutes(mx *mux.Router, formatter *render.Render) {
 	mx.HandleFunc("/v1/prediction", predictionHandler(formatter)).Methods("POST")
 	mx.HandleFunc("/v1/addLike", addLikeHandler(formatter)).Methods("POST")
 	mx.HandleFunc("/v1/addCart", addCartHandler(formatter)).Methods("POST")
-	mx.HandleFunc("/v1/userLike", userLikeHandler(formatter)).Methods("GET")
-	mx.HandleFunc("/v1/userCart", userCartHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/v1/userLike/{userId}", userLikeHandler(formatter)).Methods("GET")
+	mx.HandleFunc("/v1/userCart/{userId}", userCartHandler(formatter)).Methods("GET")
 }
 
 // API Prediction Handler
@@ -287,48 +287,65 @@ func userLikeHandler(formatter *render.Render) http.HandlerFunc {
 		/**
 			Mongo server setup
 		**/
-		// session, err := mgo.Dial(mongodb_server)
-  //       if err != nil {
-  //               fmt.Println("mongoserver panic")
-  //       }
-  //       defer session.Close()
-  //       session.SetMode(mgo.Monotonic, true)
-  //       c := session.DB(mongodb_database).C("userLike")
+		session, err := mgo.Dial(mongodb_server)
+        if err != nil {
+                fmt.Println("mongoserver panic")
+        }
+        defer session.Close()
+        session.SetMode(mgo.Monotonic, true)
+        u := session.DB(mongodb_database).C("userLike")
+        s := session.DB(mongodb_database).C("score")
+        c := session.DB(mongodb_database).C("cloth")
 		/**
 			Get Post body
 		**/        
-        body, err := ioutil.ReadAll(req.Body)
+  //       body, err := ioutil.ReadAll(req.Body)
+		// if err != nil {
+		// 	log.Fatalln(err)
+		// }
+		// fmt.Println(body)
+
+		// var userPostResult UserPostId
+		// json.Unmarshal(body, &userPostResult)
+
+		// userId := userPostResult.UserId
+
+		params := mux.Vars(req)
+		var userId string = params["userId"]
+		fmt.Println("userId", userId)
+		/**
+			Get cloth id by userid
+		**/
+		var clothIdResult []bson.M
+		err = u.Find(bson.M{"userId": userId}).All(&clothIdResult)
 		if err != nil {
-			log.Fatalln(err)
+			fmt.Println("Get cloth id panic")
 		}
-		fmt.Println(body)
+		count := len(clothIdResult)
+		/*
+			Declare return response
+		*/
+		response := make([]Predict, count)
 
-		// var postResult PostContent
-		// json.Unmarshal(body, &postResult)
-
-		// /**
-		// 	Hard code userid for testing
-		// **/   
-		// var userId = "888888"
-		// var action = postResult.Action
-		// var postId = postResult.Id
-
-		// if action == "question" {
-		// 	var question MUserQuestion
-		// 	question.UserId = userId
-		// 	question.Uquestions = postId 
-		// 	uq.Insert(question)
-		// }
-
-		// if action == "answer" {
-		// 	var answer MUserAnswer
-		// 	answer.UserId = userId
-		// 	answer.UAnswers = postId 
-		// 	ua.Insert(answer)
-		// }
-		
-		var response Success
-		response.Success = true
+		for i := 0; i < count; i++ {
+			clothSingleResult := clothIdResult[i]
+			clothId := clothSingleResult["clothId"].(string)
+			var clothInfo bson.M
+			err = c.Find(bson.M{"clothesId": clothId}).One(&clothInfo)
+			if err != nil {
+				fmt.Println("Get cloth info panic")
+			}
+			response[i].ClothId = clothId
+			response[i].Url = clothInfo["url"].(string)
+			response[i].Name = clothInfo["name"].(string)
+			response[i].Price = clothInfo["price"].(string)
+			var clothScore bson.M
+			err = s.Find(bson.M{"id": clothId}).One(&clothScore)
+			if err != nil {
+				fmt.Println("Get cloth score panic")
+			}
+			response[i].Score = clothScore["score"].(string)
+		}
         
 		formatter.JSON(w, http.StatusOK, response)
 	}
@@ -340,49 +357,65 @@ func userCartHandler(formatter *render.Render) http.HandlerFunc {
 		/**
 			Mongo server setup
 		**/
-		// session, err := mgo.Dial(mongodb_server)
-  //       if err != nil {
-  //               fmt.Println("mongoserver panic")
-  //       }
-  //       defer session.Close()
-  //       session.SetMode(mgo.Monotonic, true)
-  //       uq := session.DB(mongodb_database).C("uQuestion")
-  //       ua := session.DB(mongodb_database).C("uAnswer")
+		session, err := mgo.Dial(mongodb_server)
+        if err != nil {
+                fmt.Println("mongoserver panic")
+        }
+        defer session.Close()
+        session.SetMode(mgo.Monotonic, true)
+        u := session.DB(mongodb_database).C("cart")
+        s := session.DB(mongodb_database).C("score")
+        c := session.DB(mongodb_database).C("cloth")
 		/**
 			Get Post body
 		**/        
-        body, err := ioutil.ReadAll(req.Body)
+  //       body, err := ioutil.ReadAll(req.Body)
+		// if err != nil {
+		// 	log.Fatalln(err)
+		// }
+		// fmt.Println(body)
+
+		// var userPostResult UserPostId
+		// json.Unmarshal(body, &userPostResult)
+
+		// userId := userPostResult.UserId
+
+		params := mux.Vars(req)
+		var userId string = params["userId"]
+		fmt.Println("userId", userId)
+		/**
+			Get cloth id by userid
+		**/
+		var clothIdResult []bson.M
+		err = u.Find(bson.M{"userId": userId}).All(&clothIdResult)
 		if err != nil {
-			log.Fatalln(err)
+			fmt.Println("Get cloth id panic")
 		}
-		fmt.Println(body)
+		count := len(clothIdResult)
+		/*
+			Declare return response
+		*/
+		response := make([]Predict, count)
 
-		// var postResult PostContent
-		// json.Unmarshal(body, &postResult)
-
-		// /**
-		// 	Hard code userid for testing
-		// **/   
-		// var userId = "888888"
-		// var action = postResult.Action
-		// var postId = postResult.Id
-
-		// if action == "question" {
-		// 	var question MUserQuestion
-		// 	question.UserId = userId
-		// 	question.Uquestions = postId 
-		// 	uq.Insert(question)
-		// }
-
-		// if action == "answer" {
-		// 	var answer MUserAnswer
-		// 	answer.UserId = userId
-		// 	answer.UAnswers = postId 
-		// 	ua.Insert(answer)
-		// }
-		
-		var response Success
-		response.Success = true
+		for i := 0; i < count; i++ {
+			clothSingleResult := clothIdResult[i]
+			clothId := clothSingleResult["clothId"].(string)
+			var clothInfo bson.M
+			err = c.Find(bson.M{"clothesId": clothId}).One(&clothInfo)
+			if err != nil {
+				fmt.Println("Get cloth info panic")
+			}
+			response[i].ClothId = clothId
+			response[i].Url = clothInfo["url"].(string)
+			response[i].Name = clothInfo["name"].(string)
+			response[i].Price = clothInfo["price"].(string)
+			var clothScore bson.M
+			err = s.Find(bson.M{"id": clothId}).One(&clothScore)
+			if err != nil {
+				fmt.Println("Get cloth score panic")
+			}
+			response[i].Score = clothScore["score"].(string)
+		}
         
 		formatter.JSON(w, http.StatusOK, response)
 	}

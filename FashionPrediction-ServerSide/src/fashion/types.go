@@ -45,6 +45,10 @@ type ClothPostId struct {
 	ClothId   string     `json:"clothId" bson:"clothId"`
 }
 
+type UserPostId struct {
+	UserId   string     `json:"userId" bson:"userId"`
+}
+
 /**
 	mongo db struct
 **/
@@ -68,13 +72,13 @@ type Score struct {
 } 
 // Like Table
 type UserLike struct {
-	Id 		  string     `json:"id" bson:"id"`
+	Id 		  string     `json:"userId" bson:"userId"`
 	ClothId   string     `json:"clothId" bson:"clothId"`
 }
 
 // Cart Table
 type Cart struct {
-	Id 		  string     `json:"id" bson:"id"`
+	Id 		  string     `json:"userId" bson:"userId"`
 	ClothId   string     `json:"clothId" bson:"clothId"`
 }
 

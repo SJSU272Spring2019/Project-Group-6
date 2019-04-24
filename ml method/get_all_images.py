@@ -12,25 +12,23 @@ from io import BytesIO
 df = pd.read_excel('/Users/jing/Downloads/00002_NEW IN_WOMAN_excel.xlsx', sheetname='Products')
 print("Column headings:")
 
-print(df['Urls to images (spaced)'][0].split()[0])
+
 print(len(df['Urls to images (spaced)']))
 
-d = df['Urls to images (spaced)']
+images = df['Urls to images (spaced)']
+sku = df['Sku']
 
-all_urls = set()
-
-for i in range(len(d)):
-	url = d[i].split()[0]
-	all_urls.add(url)
+print(len(images))
+print(len(sku))
 
 
-print(len(all_urls))
-index = 0
-
-for url in all_urls:
-	print(index)
+for i in range(len(images)):
+	url = images[i].split()[0]
+	name = sku[i]
+	print(i, name, url)
+	
 	response = requests.get(url)
 	img = Image.open(BytesIO(response.content))
-	img.save("/Users/jing/Desktop/images/" + str(index) + ".png", "png")
-	index += 1
+	img.save("/Users/jing/Desktop/skuimages/" + name + ".png", "png")
+
 

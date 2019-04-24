@@ -21,3 +21,12 @@ The model will give a possibility of how this test image belongs to like class.
 ![test image](https://github.com/SJSU272Spring2019/Project-Group-6/blob/master/ml%20method/images/2.png)
 
 
+## Watson Machine Learning models
+We also tried this machine learning model service on Watson Studio. 
+[Link to IBM Watson Machine Learning service](https://www.ibm.com/cloud/machine-learning)
+
+This machine learning model will take in a table containing information of cloths as training data. We got this excel file from ZARA website.
+You can choose a column as predictive column. After training, you can test the model by entering new values of columns except predictive column.
+You will get a prediction for the predictive column.
+
+![test](https://github.com/SJSU272Spring2019/Project-Group-6/blob/master/ml%20method/images/3.png)

@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func signInSelectorChanged(_ sender: UISegmentedControl) {
@@ -44,7 +43,7 @@ class ViewController: UIViewController {
             if isSignIn {
                 //sign in the user with firebase
                 Auth.auth().signIn(withEmail: email, password: pass) { (user, error) in
-                    if let u = user {
+                    if user != nil {
                         // user is found, go to home screen
                         self.performSegue(withIdentifier: "goToHome", sender: self)
                     }

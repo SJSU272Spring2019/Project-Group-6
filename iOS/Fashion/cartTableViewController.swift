@@ -12,25 +12,25 @@ class cartTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let jsonUrlString = "http://localhost:4000/v1/addLike"
-        guard let url = URL(string: jsonUrlString) else { return}
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            //check error. reponse
-            guard let data = data else {return}
-            do {
-                let myCartList = try JSONDecoder().decode([cartList].self, from: data)
-                //print (myCartList)
-            }catch let jsonErr{print ("error serialization json", jsonErr)}
-        }.resume()
+//        let jsonUrlString = "http://localhost:4000/v1/addLike"
+//        guard let url = URL(string: jsonUrlString) else { return}
+//        URLSession.shared.dataTask(with: url) { (data, response, err) in
+//            //check error. reponse
+//            guard let data = data else {return}
+//            do {
+//                let myCartList = try JSONDecoder().decode([cartList].self, from: data)
+//                //print (myCartList)
+//            }catch let jsonErr{print ("error serialization json", jsonErr)}
+//        }.resume()
         
         self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
-//    var myCartList:[cartList] = [
-//        cartList(id: "2", mainImage: "FRAYED EDGE JACKET", title: "FRAYED EDGE JACKET", price: "45 USD", score: "0.5"),
-//        cartList(id: "3", mainImage: "TIED ASYMMETRIC TOP", title: "TIED ASYMMETRIC TOP", price: "49 USD", score: "0.6")
-//    ]
+    var myCartList:[cartList] = [
+        cartList(clothId: "2", url: "FRAYED EDGE JACKET", name: "FRAYED EDGE JACKET", price: "45 USD", score: "0.5"),
+        cartList(clothId: "3", url: "TIED ASYMMETRIC TOP", name: "TIED ASYMMETRIC TOP", price: "49 USD", score: "0.6")
+    ]
     
     
 
@@ -44,9 +44,9 @@ class cartTableViewController: UITableViewController {
         
         let List = myCartList[indexPath.row]
         cell.scoreLabel?.text = List.score
-        cell.titleLabel?.text = List.title
+        cell.titleLabel?.text = List.name
         cell.priceLabel?.text = List.price
-        cell.imageLabel?.image = UIImage(named: List.mainImage!)
+        cell.imageLabel?.image = UIImage(named: List.url!)
         
         return cell
     }

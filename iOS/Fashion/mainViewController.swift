@@ -10,7 +10,8 @@ import UIKit
 
 struct predictPic: Decodable{
     var clothId : String?
-    var image : String?
+    var url : String?
+    var name : String?
     var price : String?
     var score : String?
 }
@@ -28,25 +29,27 @@ class mainViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let jsonUrlString = "http://localhost:4000/v1/prediction"
+        let jsonUrlString = "http://54.189.198.193:4000/v1/prediction?"
         guard let url = URL(string: jsonUrlString) else { return}
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             //check error. reponse
             guard let data = data else {return}
             do {
                 let myPredictPic = try JSONDecoder().decode(predictPic.self, from: data)
+                print (myPredictPic)
             }catch let jsonErr{ print ("error serialization json", jsonErr)}
             }.resume()
     }
 
-    
     @IBAction func dislikeTapped(_ sender: UIButton) {
+        // post userID and clothID
     }
-    
 
     @IBAction func superlikeTapped(_ sender: UIButton) {
+        // post userID and clothID
     }
     
     @IBAction func likedTapped(_ sender: UIButton) {
+        // post userID and clothID
     }
 }

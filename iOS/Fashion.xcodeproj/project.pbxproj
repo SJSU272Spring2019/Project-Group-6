@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		421698062267F4DE0000543F /* FashionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421698052267F4DD0000543F /* FashionAPI.swift */; };
-		4216980822691CC50000543F /* ethnicityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4216980722691CC50000543F /* ethnicityTableViewController.swift */; };
+		4216980822691CC50000543F /* styleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4216980722691CC50000543F /* styleTableViewController.swift */; };
 		4216980C226BB3610000543F /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4216980B226BB3610000543F /* mainViewController.swift */; };
 		4216980E226BE4320000543F /* wishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4216980D226BE4320000543F /* wishListTableViewCell.swift */; };
 		42169810226D3AEC0000543F /* wishListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4216980F226D3AEC0000543F /* wishListTableViewController.swift */; };
@@ -40,7 +40,7 @@
 		246DB8A53A7F78AD125BEF45 /* Pods_FashionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FashionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		405F06FAF301C01C71C2F938 /* Pods-FashionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FashionTests.release.xcconfig"; path = "Target Support Files/Pods-FashionTests/Pods-FashionTests.release.xcconfig"; sourceTree = "<group>"; };
 		421698052267F4DD0000543F /* FashionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionAPI.swift; sourceTree = "<group>"; };
-		4216980722691CC50000543F /* ethnicityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ethnicityTableViewController.swift; sourceTree = "<group>"; };
+		4216980722691CC50000543F /* styleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = styleTableViewController.swift; sourceTree = "<group>"; };
 		4216980B226BB3610000543F /* mainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
 		4216980D226BE4320000543F /* wishListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wishListTableViewCell.swift; sourceTree = "<group>"; };
 		4216980F226D3AEC0000543F /* wishListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wishListTableViewController.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				422BBA2322610EC300D75928 /* Info.plist */,
 				422BBA372261111000D75928 /* GoogleService-Info.plist */,
 				421698052267F4DD0000543F /* FashionAPI.swift */,
-				4216980722691CC50000543F /* ethnicityTableViewController.swift */,
+				4216980722691CC50000543F /* styleTableViewController.swift */,
 				4216980B226BB3610000543F /* mainViewController.swift */,
 				4216980D226BE4320000543F /* wishListTableViewCell.swift */,
 				4216980F226D3AEC0000543F /* wishListTableViewController.swift */,
@@ -363,7 +363,7 @@
 				421698062267F4DE0000543F /* FashionAPI.swift in Sources */,
 				42169814226FBEDB0000543F /* cartTableViewCell.swift in Sources */,
 				422BBA1822610EC000D75928 /* AppDelegate.swift in Sources */,
-				4216980822691CC50000543F /* ethnicityTableViewController.swift in Sources */,
+				4216980822691CC50000543F /* styleTableViewController.swift in Sources */,
 				42169810226D3AEC0000543F /* wishListTableViewController.swift in Sources */,
 				429C5ECF2263894F00FAFDA3 /* SettingsTableViewController.swift in Sources */,
 			);

@@ -56,7 +56,7 @@ class ViewController: UIViewController {
                     //Register the ser with Firebase
                 Auth.auth().createUser(withEmail: email, password: pass) { (user, error) in
                     if error != nil{
-                        print (error?.localizedDescription."error") //print error
+                        print (error) //print error
                     }
                     // check if user isn't nil
                     if user != nil{

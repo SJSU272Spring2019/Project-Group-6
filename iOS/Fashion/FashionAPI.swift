@@ -8,21 +8,18 @@
 
 import Foundation
 class FashionAPI{
-    func postRaceInfo(race: String) {
+    func postStyleInfo(style: String) {
+        print("PRINT here: --in api")
         let json: [String: Any] = [
-            "race": race
+            "race": style
         ]
-        var urlComponents = URLComponents(string: "http://localhost:4000/v1/prediction")!
+        var urlComponents = URLComponents(string: "http://54.189.198.193:4000/v1/prediction")!
         let queryItems = [
-            URLQueryItem(name:"race", value:race)
+            URLQueryItem(name:"race", value:style)
             ]
         urlComponents.queryItems = queryItems
         let url = urlComponents.url
-        
-        print("\(url) is url")
-        
         connectServer(url: url as! URL)
-        
     }
     
     func postLikedItems(userId: String, clothId: String) {
@@ -61,7 +58,7 @@ class FashionAPI{
     func connectServer(url: URL){
         URLSession.shared.dataTask(with:url) { (data, response, error) in
             if error != nil {
-                print(error)
+                print(error?.localizedDescription ?? "err")
             } else{
                 do{
                     let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String:Any]

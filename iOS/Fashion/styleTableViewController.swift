@@ -26,7 +26,8 @@ class styleTableViewController: UITableViewController {
         self.vacationCell.accessoryType = .none
         if style == "Formal" {
             self.formalCell.accessoryType = .checkmark
-            FashionAPI().postStyleInfo(style: "Asian")
+            // call POST style API
+            //FashionAPI().postStyleInfo(style: "Asian")
         }else if style == "Casual"{
             self.casualCell.accessoryType = .checkmark
         }else if style == "Sports"{

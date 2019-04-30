@@ -124,6 +124,94 @@ db.model.insert(
 	}
 );
 
+// new 04/29
+db.model.insert(
+	{
+		modelId: "ModelxCasual_1981535576",
+		clothesId: "HM377914650"
+	}
+);
+
+db.model.insert(
+	{
+		modelId: "ModelxFormal_164737949",
+		clothesId: "H605238993"
+	}
+);
+
+db.model.insert(
+	{
+		modelId: "ModelxFormal_164737949",
+		clothesId: "HM222531713"
+	}
+);
+
+db.model.insert(
+	{
+		modelId: "ModelxFormal_164737949",
+		clothesId: "H960311752"
+	}
+);
+
+db.model.insert(
+	{
+		modelId: "ModelxFormal_164737949",
+		clothesId: "HM482160363"
+	}
+);
+
+db.cloth.insert(
+	{
+		clothesId: "HM482160363",
+		name: "ZARA LOGO PRINT SHIRT",
+		description: "",
+	    url: "https://static.zara.net/photos///2018/I/0/1/p/8366/839/700/3/w/1024/8366839700_1_1_1.jpg?ts=1537985374400",
+		price: "29.90"
+	}
+);
+
+db.cloth.insert(
+	{
+		clothesId: "H960311752",
+		name: "KNIT TOP WITH CHAIN DETAIL",
+		description: "",
+	    url: "https://static.zara.net/photos///2018/I/0/1/p/6254/141/800/2/w/1024/6254141800_1_1_1.jpg?ts=1537885249199",
+		price: "37.43"
+	}
+);
+
+db.cloth.insert(
+	{
+		clothesId: "HM222531713",
+		name: "SCALLOPED HIGH NECK SWEATER",
+		description: "",
+	    url: "https://static.zara.net/photos///2018/I/0/1/p/5802/115/305/2/w/1024/5802115305_1_1_1.jpg?ts=1537984959067",
+		price: "24.93"
+	}
+);
+
+db.cloth.insert(
+	{
+		clothesId: "HM377914650",
+		name: "BUTTONED DOUBLE-BREASTED COAT",
+		description: "",
+	    url: "https://static.zara.net/photos///2018/I/0/1/p/8328/697/800/2/w/2048/8328697800_1_1_1.jpg?ts=1538140491485",
+		price: "112.43"
+	}
+);
+
+db.cloth.insert(
+	{
+		clothesId: "H605238993",
+		name: "TEXTURED COAT",
+		description: "",
+	    url: "https://static.zara.net/photos///2018/I/0/1/p/4070/221/401/2/w/1024/4070221401_1_1_1.jpg?ts=1536917378336",
+		price: "99.93"
+	}
+);
+
+
+
 /**  Cloth Table -- Store cloth id (raceinfo) and clothes name, description, 
 	 price
 **/
@@ -295,7 +383,14 @@ db.score.insert(
 **/
 db.userLike.insert(
 	{
-		userId: "123"
+		userId: "123",
+		clothesId: "123"	
+	}
+);
+
+db.dislike.insert(
+	{
+		userId: "123",
 		clothesId: "123"	
 	}
 );

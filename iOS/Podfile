@@ -7,8 +7,8 @@ target 'Fashion' do
 
   # Pods for Fashion
 
-  	pod 'Firebase/Core'
-  	pod 'FirebaseUI/Auth'
+  pod 'Firebase/Core'
+  pod 'FirebaseUI/Auth'
 
 
   target 'FashionTests' do
@@ -17,6 +17,4 @@ target 'Fashion' do
   end
 
 
-  # Pods for AlamofireExample
- 	pod 'Alamofire'
 end

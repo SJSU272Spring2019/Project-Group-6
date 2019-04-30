@@ -8,46 +8,56 @@
 
 import UIKit
 
+struct MyCart: Codable{
+    var clothId : String?
+    var url : String?
+    var name : String?
+    var price : String?
+    var score : String?
+}
 class cartTableViewController: UITableViewController {
 
+    var cart = [MyCart]()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let jsonUrlString = "http://localhost:4000/v1/addLike"
-//        guard let url = URL(string: jsonUrlString) else { return}
-//        URLSession.shared.dataTask(with: url) { (data, response, err) in
-//            //check error. reponse
-//            guard let data = data else {return}
-//            do {
-//                let myCartList = try JSONDecoder().decode([cartList].self, from: data)
-//                //print (myCartList)
-//            }catch let jsonErr{print ("error serialization json", jsonErr)}
-//        }.resume()
-        
-        self.tableView.reloadData()
+        getCartList(){ (success, List) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
-
-    // MARK: - Table view data source
-    var myCartList:[cartList] = [
-        cartList(clothId: "2", url: "FRAYED EDGE JACKET", name: "FRAYED EDGE JACKET", price: "45 USD", score: "0.5"),
-        cartList(clothId: "3", url: "TIED ASYMMETRIC TOP", name: "TIED ASYMMETRIC TOP", price: "49 USD", score: "0.6")
-    ]
     
+    func getCartList (completion: @escaping (Bool?, MyCart?) -> Void){
+        let jsonUrlString = "http://54.189.198.193:4000/v1/userCart"
+        let url = URL(string: jsonUrlString)!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let parameters: [String: Any] = ["userId" : userID]
+        let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        let session = URLSession.shared
+        let task = session.uploadTask(with: request, from: jsonData) { data, response, error in
+            guard let data = data else {
+                completion(false, nil)
+                return
+            }
+            self.cart = try! JSONDecoder().decode([MyCart].self, from: data)
+            print (self.cart)
+            completion(true, nil)
+        }
+        task.resume()
+    }
     
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return myCartList.count
+        return cart.count
     }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as? cartTableViewCell else { return UITableViewCell() }
-        
-        let List = myCartList[indexPath.row]
-        cell.scoreLabel?.text = List.score
-        cell.titleLabel?.text = List.name
-        cell.priceLabel?.text = List.price
-        cell.imageLabel?.image = UIImage(named: List.url!)
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? wishListTableViewCell else { return UITableViewCell() }
+        let vals = self.cart[indexPath.row]
+        cell.scoreLabel?.text = vals.score
+        cell.titleLabel?.text = vals.name
+        cell.priceLabel?.text = vals.price
+        cell.imageLabel?.image = UIImage(url : URL(string: vals.url!))
         return cell
     }
 }

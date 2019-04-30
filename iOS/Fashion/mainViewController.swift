@@ -5,12 +5,13 @@
 //  Created by Junlan Lu on 4/20/19.
 //  Copyright © 2019 Junlan Lu. All rights reserved.
 //
-
 import UIKit
 import FirebaseAuth
 
 let userID = Auth.auth().currentUser!.uid
 var clothID = "123" //default
+var clothFIndex = 0
+var clothCIndex = 0
 
 struct PredictPic: Codable{
     var clothId : String?
@@ -47,11 +48,9 @@ class mainViewController: UIViewController {
     @IBOutlet weak var imageLabel: UIImageView!
     @IBOutlet weak var itemLabel: UITextField!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        getPrediction(style:"Casual") { (success, predicted) in
+        getPrediction(style:"Formal") { (success, predicted) in
            // guard let success = success else { return }
         }
     }
@@ -72,7 +71,11 @@ class mainViewController: UIViewController {
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-        let parameters: [String: Any] = ["style" : style]
+        // hardcode cloth id
+        var clothIndex = 0
+        if (style == "Formal") {clothIndex = clothFIndex}else {clothIndex = clothCIndex}
+        
+        let parameters: [String: Any] = ["style" : style, "clothIndex" : clothIndex]
         let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
         let session = URLSession.shared
         let task = session.uploadTask(with: request, from: jsonData) { data, response, error in
@@ -91,8 +94,9 @@ class mainViewController: UIViewController {
                     self.itemLabel?.text = predicted?.name
                 }
             }
+            // hard increase clothIndex
+            if (style == "Formal") {clothFIndex = clothFIndex + 1} else {clothCIndex = clothCIndex + 1}
             clothID = ((predicted?.clothId!)!)
-            
             DispatchQueue.main.async {
                 myActivityIndicator.stopAnimating()
             }
@@ -145,6 +149,7 @@ class mainViewController: UIViewController {
     }
     
     @IBAction func dislikeTapped(_ sender: UIButton) {
+       
         // no need to POST
         // get prediction
         getPrediction(style:"Formal") { (success, predicted) in
@@ -155,6 +160,8 @@ class mainViewController: UIViewController {
         // post userID and clothID
         let ID_cloth = clothID
         let ID_user = userID
+        print (ID_user)
+        print (ID_cloth)
         postAddCart (userId: ID_user, clothId: ID_cloth){(success, added)in
             
         }
@@ -168,11 +175,8 @@ class mainViewController: UIViewController {
         let ID_cloth = clothID
         let ID_user = userID
         postAddLike (userId: ID_user, clothId: ID_cloth){(success, added)in
-            
         }
-        
         getPrediction(style:"Formal") { (success, predicted) in
-
         }
     }
 }

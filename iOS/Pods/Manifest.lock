@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (4.8.2)
   - Firebase/Auth (5.20.2):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.4.2)
@@ -65,13 +64,11 @@ PODS:
   - nanopb/encode (0.3.901)
 
 DEPENDENCIES:
-  - Alamofire
   - Firebase/Core
   - FirebaseUI/Auth
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -85,7 +82,6 @@ SPEC REPOS:
     - nanopb
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
   FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
   FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
@@ -98,6 +94,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: ba5d48f57a7e2d0e09aa63e696a4f2e8078d11c8
+PODFILE CHECKSUM: cb6ebfb534cb0748281da786c961eac3a7efb499
 
 COCOAPODS: 1.6.1

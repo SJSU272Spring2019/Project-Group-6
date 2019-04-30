@@ -7,44 +7,61 @@
 //
 
 import UIKit
+import FirebaseAuth
+
+
+
+struct MyList: Codable{
+    var clothId : String?
+    var url : String?
+    var name : String?
+    var price : String?
+    var score : String?
+}
+
 
 class wishListTableViewController: UITableViewController {
-
+    var list = [MyList]()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        //self.tableView.register(wishListTableViewCell.self, forCellReuseIdentifier: "itemCell")
-//        let jsonUrlString = "http://localhost:4000/v1/addLike"
-//        guard let url = URL(string: jsonUrlString) else { return}
-//        URLSession.shared.dataTask(with: url) { (data, response, err) in
-//            //check error. reponse
-//            guard let data = data else {return}
-//            do {
-//                let myWishList = try JSONDecoder().decode([List].self, from: data)
-//                //print (List)
-//                //https://www.youtube.com/watch?v=YY3bTxgxWss
-//            }catch let jsonErr{ print ("error serialization json", jsonErr)}
-//        }.resume()
-        self.tableView.reloadData()
+        getWishList(){ (success, List) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
-    var myWishList:[List] = [
-        List(clothId: "1", url: "Dress", name: "Dress", price: "76 USD", score: "0.1"),
-        List(clothId: "2", url: "FRAYED EDGE JACKET", name: "FRAYED EDGE JACKET", price: "45 USD", score: "0.5"),
-        List(clothId: "3", url: "TIED ASYMMETRIC TOP", name: "TIED ASYMMETRIC TOP", price: "49 USD", score: "0.6")
-    ]
-  
+    func getWishList (completion: @escaping (Bool?, MyList?) -> Void){
+        let jsonUrlString = "http://54.189.198.193:4000/v1/userLike"
+        let url = URL(string: jsonUrlString)!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let parameters: [String: Any] = ["userId" : userID]
+        let jsonData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+        let session = URLSession.shared
+        let task = session.uploadTask(with: request, from: jsonData) { data, response, error in
+            guard let data = data else {
+                completion(false, nil)
+                return
+            }
+            self.list = try! JSONDecoder().decode([MyList].self, from: data)
+            print (self.list)
+            completion(true, nil)
+        }
+        task.resume()
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return myWishList.count
+        return list.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? wishListTableViewCell else { return UITableViewCell() }
-
-        let List = myWishList[indexPath.row]
-        cell.scoreLabel?.text = List.score
-        cell.titleLabel?.text = List.name
-        cell.priceLabel?.text = List.price
-        cell.imageLabel?.image = UIImage(named: List.url!)
+        let val = self.list[indexPath.row]
+        cell.scoreLabel?.text = val.score
+        cell.titleLabel?.text = val.name
+        cell.priceLabel?.text = val.price
+        cell.imageLabel?.image = UIImage(url : URL(string: val.url!))
         return cell
     }
 }

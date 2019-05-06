@@ -20,6 +20,7 @@
 		422BBA2222610EC300D75928 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422BBA2022610EC300D75928 /* LaunchScreen.storyboard */; };
 		422BBA2D22610EC300D75928 /* FashionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422BBA2C22610EC300D75928 /* FashionTests.swift */; };
 		422BBA382261111000D75928 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422BBA372261111000D75928 /* GoogleService-Info.plist */; };
+		42404B572278D41B004AEBE9 /* extensionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42404B562278D41B004AEBE9 /* extensionFile.swift */; };
 		429C5ECF2263894F00FAFDA3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429C5ECE2263894E00FAFDA3 /* SettingsTableViewController.swift */; };
 		750BF962A7C60027E70E21BE /* Pods_Fashion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55D063D5B904F88C2A46C983 /* Pods_Fashion.framework */; };
 		A6F58D6AC9B4A56A0193E159 /* Pods_FashionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246DB8A53A7F78AD125BEF45 /* Pods_FashionTests.framework */; };
@@ -55,6 +56,7 @@
 		422BBA2C22610EC300D75928 /* FashionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionTests.swift; sourceTree = "<group>"; };
 		422BBA2E22610EC300D75928 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		422BBA372261111000D75928 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		42404B562278D41B004AEBE9 /* extensionFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionFile.swift; sourceTree = "<group>"; };
 		429C5ECE2263894E00FAFDA3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		55D063D5B904F88C2A46C983 /* Pods_Fashion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fashion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB612B5EB00B59B9608F379 /* Pods-Fashion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fashion.release.xcconfig"; path = "Target Support Files/Pods-Fashion/Pods-Fashion.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				4216980F226D3AEC0000543F /* wishListTableViewController.swift */,
 				42169811226FBCF70000543F /* cartTableViewController.swift */,
 				42169813226FBEDB0000543F /* cartTableViewCell.swift */,
+				42404B562278D41B004AEBE9 /* extensionFile.swift */,
 			);
 			path = Fashion;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				42169814226FBEDB0000543F /* cartTableViewCell.swift in Sources */,
 				422BBA1822610EC000D75928 /* AppDelegate.swift in Sources */,
 				4216980822691CC50000543F /* styleTableViewController.swift in Sources */,
+				42404B572278D41B004AEBE9 /* extensionFile.swift in Sources */,
 				42169810226D3AEC0000543F /* wishListTableViewController.swift in Sources */,
 				429C5ECF2263894F00FAFDA3 /* SettingsTableViewController.swift in Sources */,
 			);

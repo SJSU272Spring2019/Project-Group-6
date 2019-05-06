@@ -38,6 +38,7 @@ extension UIImage {
     }
 }
 
+
 class mainViewController: UIViewController {
     
     @IBOutlet weak var scoreLabel: UITextField!
@@ -50,13 +51,55 @@ class mainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getPrediction(style:"Formal") { (success, predicted) in
+        getPrediction() { (success, predicted) in
            // guard let success = success else { return }
         }
+        
+        likeLabel.clipsToBounds = false
+        likeLabel.layer.shadowColor = UIColor.lightGray.cgColor
+        likeLabel.layer.shadowOpacity = 1
+        likeLabel.layer.shadowOffset = CGSize.zero
+        likeLabel.layer.shadowRadius = 2
+        
+        superlikeLabel.clipsToBounds = false
+        superlikeLabel.layer.shadowColor = UIColor.lightGray.cgColor
+        superlikeLabel.layer.shadowOpacity = 1
+        superlikeLabel.layer.shadowOffset = CGSize.zero
+        superlikeLabel.layer.shadowRadius = 2
+        
+        dislikeLabel.clipsToBounds = false
+        dislikeLabel.layer.shadowColor = UIColor.lightGray.cgColor
+        dislikeLabel.layer.shadowOpacity = 1
+        dislikeLabel.layer.shadowOffset = CGSize.zero
+        dislikeLabel.layer.shadowRadius = 2
+        
+        // UIImage
+//        let outerView = imageLabel
+        imageLabel.layer.roundCorners(radius: 20)
+        imageLabel.layer.addShadow()
+        
+//        imageLabel.layer.insertSublayer(shadowLayer, at: 1)
+        
+//        let myImage = UIImageView(frame: outerView!.bounds)
+//        myImage.clipsToBounds = true
+//        myImage.layer.cornerRadius = 20
+//        myImage.layer.borderColor = UIColor.white.cgColor
+//        outerView?.addSubview(myImage)
+        
+        //gradient
+        self.imageLabel.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        let shadow = UIColor.black.withAlphaComponent(0.6).cgColor
+        let bottomImageGradient = CAGradientLayer()
+        bottomImageGradient.frame = CGRect(x: 0, y: 405, width: 355, height: 150)
+        bottomImageGradient.colors = [UIColor.clear.cgColor, shadow]
+        imageLabel.layer.insertSublayer(bottomImageGradient, at: 0)
+        
+
+      
     }
     
-    func getPrediction(style:String, completion: @escaping (Bool?, PredictPic?) -> Void) {
-        
+    func getPrediction(completion: @escaping (Bool?, PredictPic?) -> Void) {
+        let style = UserDefaults.standard.string(forKey: "style") ?? "Formal"
         let myActivityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
         myActivityIndicator.color = UIColor.black
         myActivityIndicator.backgroundColor = UIColor.gray
@@ -73,6 +116,7 @@ class mainViewController: UIViewController {
         request.httpMethod = "POST"
         // hardcode cloth id
         var clothIndex = 0
+        
         if (style == "Formal") {clothIndex = clothFIndex}else {clothIndex = clothCIndex}
         
         let parameters: [String: Any] = ["style" : style, "clothIndex" : clothIndex]
@@ -149,14 +193,15 @@ class mainViewController: UIViewController {
     }
     
     @IBAction func dislikeTapped(_ sender: UIButton) {
-       
+        sender.pulsate()
         // no need to POST
         // get prediction
-        getPrediction(style:"Formal") { (success, predicted) in
+        getPrediction() { (success, predicted) in
         }
     }
 
     @IBAction func superlikeTapped(_ sender: UIButton) {
+        sender.pulsate()
         // post userID and clothID
         let ID_cloth = clothID
         let ID_user = userID
@@ -166,17 +211,18 @@ class mainViewController: UIViewController {
             
         }
         // get prediction
-        getPrediction(style:"Formal") { (success, predicted) in
+        getPrediction() { (success, predicted) in
         }
     }
     
     @IBAction func likedTapped(_ sender: UIButton) {
+        sender.pulsate()
         // post userID and clothID
         let ID_cloth = clothID
         let ID_user = userID
         postAddLike (userId: ID_user, clothId: ID_cloth){(success, added)in
         }
-        getPrediction(style:"Formal") { (success, predicted) in
+        getPrediction() { (success, predicted) in
         }
     }
 }

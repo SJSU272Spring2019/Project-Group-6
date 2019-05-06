@@ -52,7 +52,7 @@ class cartTableViewController: UITableViewController {
         return cart.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? wishListTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell", for: indexPath) as? cartTableViewCell else { return UITableViewCell() }
         let vals = self.cart[indexPath.row]
         cell.scoreLabel?.text = vals.score
         cell.titleLabel?.text = vals.name
